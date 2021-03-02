@@ -1,0 +1,7 @@
+{
+  "name": "ionicMobilMoneyTransfert",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
