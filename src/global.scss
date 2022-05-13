@@ -24,3 +24,27 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+.custom{
+
+  button.alert-button:nth-child(1){
+    background-color: #d9534f;
+    color: white;
+    border-radius:10ch;
+
+  }
+
+  button.alert-button:nth-child(2){
+   background-color: #66e8FF;
+   color: white;
+   border-radius:10ch;
+
+  }
+ }
+ .filiations{
+   font-weight: bolder;
+
+ }
+ .alertHeader{
+  color: red;
+  
+ }

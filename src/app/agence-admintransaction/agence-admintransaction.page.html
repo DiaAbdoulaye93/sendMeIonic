@@ -1,0 +1,72 @@
+<ion-header>
+
+  <ion-toolbar >
+    <button class="homebutton"  (click)='homebutton()'><i class="fas fa-home"></i></button>
+    <img src="../../assets/images/projectIcone.jpeg" alt="no image" class="image">
+  </ion-toolbar><br>
+</ion-header>
+<ion-content>
+	<br> <ion-title style="text-align: center; text-decoration: underline;">Mes Transactions</ion-title><br>
+  <ion-segment>
+    <ion-segment-button  class="segment" (click)="showEnvoies()"  [ngClass]='loadcomponent'>
+      Liste des Envoies
+    </ion-segment-button>
+    <ion-segment-button (click)="showRetraits()">
+      Liste des retraits
+    </ion-segment-button>
+  </ion-segment><br>
+  <ion-list class="bg-transparent" [hidden]=envoiesListe>
+    <table mat-table [dataSource]="dataSourceEnvoies" class="mat-elevation-z8" matSort>   
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Date </th>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.createdAt | date: 'dd/MM/yyyy'}} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="emeteur">
+        <th mat-header-cell *matHeaderCellDef> Emetteur </th>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.prenomemet}}   {{transaction.nomemet }} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="montant">
+        <th mat-header-cell *matHeaderCellDef> Montant </th>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.montant}} </td>
+      </ng-container>
+      <ng-container matColumnDef="frais">
+        <th mat-header-cell *matHeaderCellDef> Frais </th>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.frais}} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 15]" [pageSize]= "10" showFirstLastButtons class="tabfooter"></mat-paginator>
+    <ion-badge class="montantbadge">  <ion-badge color="secondary" style="float: left; width: 40%;border-bottom: 2px solid #66e8FF">Total </ion-badge><ion-badge class="montant">{{montantEnvoies  | number:'': 'fr-FR'}}  francs</ion-badge></ion-badge>
+    </ion-list>
+
+  <ion-list class="bg-transparent" [hidden]=retraitListes>
+    <table mat-table [dataSource]="dataSourceRetraits" class="mat-elevation-z8" matSort>   
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Date </th>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.createdAt | date: 'dd/MM/yyyy'}} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="emeteur">
+        <th mat-header-cell *matHeaderCellDef> Beneficiaire </th>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.prenombenef}}   {{transaction.nomemet }} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="montant">
+        <th mat-header-cell *matHeaderCellDef> Montant </th>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.montant}} </td>
+      </ng-container>
+      <ng-container matColumnDef="frais">
+        <th mat-header-cell *matHeaderCellDef> Frais </th>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.frais}} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 15]" [pageSize]= "10" showFirstLastButtons class="tabfooter"></mat-paginator>
+    <ion-badge class="montantbadge">  <ion-badge color="secondary" style="float: left;; width: 40%;border-bottom: 2px solid #66e8FF">Total </ion-badge> <ion-badge class="montant">{{montantRetraits  | number:'': 'fr-FR'}}  francs</ion-badge></ion-badge>
+  </ion-list>
+
+</ion-content>

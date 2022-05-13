@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-toolbar>
+    <button class="homebutton" (click)='homebutton()'><i class="fas fa-home"></i></button>
+    <img src="../../assets/images/projectIcone.jpeg" alt="no image" class="image">
+  </ion-toolbar><br>
+</ion-header>
+<ion-content>
+  <br>
+  <ion-title style="text-align: center; text-decoration: underline;">{{TitleMessage}}</ion-title><br>
+  <ion-segment>
+    <ion-segment-button class="segment" (click)="showEnvoies()" [ngClass]='loadcomponent'>
+      Liste des Envoies
+    </ion-segment-button>
+    <ion-segment-button (click)="showRetraits()">
+      Liste des retraits
+    </ion-segment-button>
+  </ion-segment>
+  <div [hidden]=envoiesListe>
+  <ion-list class="bg-transparent">
+
+    <ion-grid>
+      <ion-title style="text-align: center; text-decoration: underline;">Filtrer les transactions</ion-title><br>
+      <ion-row>
+          <ion-col size-sm="6" size="6" class="ion-text-center">
+            <ion-item>
+            <ion-label position="stacked" class="ion-text-wrap" >Date debut</ion-label>
+            <ion-input type="Date" [(ngModel)]='formulaire.debut' name='debut' class="item" ></ion-input>
+          </ion-item>
+          </ion-col>
+  
+          <ion-col size-sm="6" size="6" class="ion-text-center">
+            <ion-item>
+            <ion-label position="stacked" class="ion-text-wrap" >Date fin</ion-label>
+            <ion-input type="Date" [(ngModel)]='formulaire.fin' name='fin' (focusout)="filterEnvois($event)" class="item" style="width:100%"></ion-input>      
+          </ion-item>
+          </ion-col>
+      </ion-row>
+  </ion-grid>
+    <ion-grid class="ion-margin">
+      <ion-row>
+
+        <ion-col>Date envoie</ion-col>
+        <ion-col>Montant</ion-col>
+        <ion-col>Frais</ion-col>
+      </ion-row>
+      <ion-row *ngFor="let envoieItem of envoiesDataListe">
+
+        <ion-col>{{ envoieItem.createdAt | date: 'dd/MM/yyyy' }}</ion-col>
+        <ion-col>{{ envoieItem.montant }}</ion-col>
+        <ion-col>{{ envoieItem.frais }}</ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <ion-badge class="montantbadge">
+    <ion-badge color="secondary" style="float: left; width: 40%;border-bottom: 2px solid #66e8FF">Total </ion-badge>
+    <ion-badge class="montant">{{montantEnvoies | number:'': 'fr-FR'}} francs</ion-badge>
+  </ion-badge>
+</div>
+  <ion-list class="bg-transparent" [hidden]=retraitListes>
+    <ion-grid>
+      <ion-title style="text-align: center; text-decoration: underline;">Filtrer les transactions</ion-title><br>
+      <ion-row>
+          <ion-col size-sm="6" size="6" class="ion-text-center">
+            <ion-item>
+            <ion-label position="stacked" class="ion-text-wrap" >Date debut</ion-label>
+            <ion-input type="Date" [(ngModel)]='formulaire.debutretrait' name='debut' class="item" ></ion-input>
+          </ion-item>
+          </ion-col>
+  
+          <ion-col size-sm="6" size="6" class="ion-text-center">
+            <ion-item>
+            <ion-label position="stacked" class="ion-text-wrap" >Date fin</ion-label>
+            <ion-input type="Date" [(ngModel)]='formulaire.finretrait' name='fin' (focusout)="filterRetrait($event)" class="item" style="width:100%"></ion-input>      
+          </ion-item>
+          </ion-col>
+      </ion-row>
+  </ion-grid>
+    <ion-grid class="ion-margin">
+      <ion-row>
+
+        <ion-col>Date retrait</ion-col>
+        <ion-col>Montant</ion-col>
+        <ion-col>Frais</ion-col>
+      </ion-row>
+      <ion-row *ngFor="let envoieItem of retraitDataListe">
+
+        <ion-col>{{ envoieItem.date_retrait | date: 'dd/MM/yyyy'}}</ion-col>
+        <ion-col>{{ envoieItem.montant }}</ion-col>
+        <ion-col>{{ envoieItem.frais }}</ion-col>
+      </ion-row>
+
+    </ion-grid>
+    <ion-badge class="montantbadge">
+      <ion-badge color="secondary" style="float: left;; width: 40%;border-bottom: 2px solid #66e8FF">Total </ion-badge>
+      <ion-badge class="montant">{{montantRetraits | number:'': 'fr-FR'}} francs</ion-badge>
+    </ion-badge>
+  </ion-list>
+  <ion-content style="color: red;">
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-content>
+
+</ion-content>

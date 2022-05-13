@@ -1,7 +1,14 @@
 {
+
   "name": "ionicMobilMoneyTransfert",
   "integrations": {
     "capacitor": {}
   },
-  "type": "angular"
+  "type": "angular",
+  "proxies": [
+    {
+      "path": "/ai",
+      "proxyUrl": "https://127.0.0.1:8000/api"
+    }
+  ]
 }

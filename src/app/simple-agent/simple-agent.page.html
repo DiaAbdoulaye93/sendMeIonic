@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <img src="../../assets/images/projectIcone.jpeg" alt="no image" class="image">
+  </ion-toolbar><br>
+
+  <ion-item lines="none" class="solde">
+    <ion-label position="stacked">Mon solde disponible</ion-label>
+    <div class="inlineDiv">
+    <ion-input class="montant" [type]="getType()" [value]="[solde  | number:'': 'fr-FR']" readonly></ion-input> 
+        <span class="cfa">F cfa</span>
+      <ion-icon  [name]="isActive ? 'eye' : 'eye-off'" item-right (click)="isActive = !isActive;" isActive=true> </ion-icon>
+    </div>
+    <small>mise a jour le 04/03/2021</small>
+  </ion-item>
+  <br><br>    
+  <ion-label>{{agence}}</ion-label>
+  <ion-label style="float: right;"><small> User:</small>  {{prenom + ' ' + nom}}</ion-label>
+</ion-header>
+<ion-content>
+  <br><br>
+  <ion-item no-lines routerLinkActive="active" ><i class="fas fa-share"></i><a [routerLink]="['/transfert']">Dépôt <i class="fas fa-angle-right"></i></a></ion-item>
+  <ion-item no-lines > <i class="fas fa-reply"></i><a [routerLink]="['/retrait']">Retrait <i class="fas fa-angle-right"></i></a></ion-item>
+  <ion-item no-lines [hidden]='simpleAgent'><i class="fas fa-sync"></i><a [routerLink]="['/liste-transactions']">Mes Transactions <i class="fas fa-angle-right"></i></a></ion-item>
+  <ion-item no-lines [hidden]='adminAgence'><i class="fas fa-sync"></i><a [routerLink]="['/agence-admintransaction']">Mes Transactions <i class="fas fa-angle-right"></i></a></ion-item>
+  <ion-item no-lines [hidden]='adminAgence'><i class="fas fa-calculator"></i><a [routerLink]="['/liste-transactions']">Toute les Transactions<i class="fas fa-angle-right"></i></a></ion-item>
+  <ion-item no-lines [hidden]='adminAgence'><i class="fas fa-calculator"></i><a [routerLink]="['/commissions']">Mes Commissions <i class="fas fa-angle-right"></i></a></ion-item>
+  <ion-item no-lines><i class="fas fa-calculator"></i><a [routerLink]="['/calculateur-frais']">Calculateur de frais <i class="fas fa-angle-right"></i></a></ion-item>
+  <ion-item no-lines><i class="fas fa-sign-out-alt"></i><a  (click)="logoutProcess()">Deconnexion <i class="fas fa-angle-right"></i></a></ion-item>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-icon name="home" style="margin-top: -20px; margin-left: 10%;font-size: 40px;"></ion-icon>
+    <ion-icon name="timer" style="margin-top: -20px; margin-left: 45%;font-size: 40px;color: #E5E5E5;"></ion-icon>
+    <ion-icon name="calculator" style="margin-top: -20px; margin-left: 80%;font-size: 40px;color: #E5E5E5;"></ion-icon>
+    </ion-toolbar>
+</ion-footer>

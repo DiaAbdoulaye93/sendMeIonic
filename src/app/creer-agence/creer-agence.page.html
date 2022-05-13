@@ -1,0 +1,79 @@
+<ion-header style="border-bottom:4px solid whitesmoke;">
+  <ion-toolbar>
+    <button class="homebutton"  (click)='homebutton()'><i class="fas fa-home"></i></button>
+    <img src="../../assets/images/projectIcone.jpeg" alt="no image" class="image"><br><br>
+    <div style="width:50%; border-bottom: 3px solid #66e8FF; margin-left:25%; padding: 0.5ch;">
+      <span>Creer une agence</span>
+      </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="new-background-color">
+  <ion-segment>
+    <ion-segment-button value="agence"  class="segment" (click)="showAgence()">
+      Agence Infos
+    </ion-segment-button>
+    <ion-segment-button (click)="showUser()">
+  Initialiser un utilisateur
+    </ion-segment-button>
+  </ion-segment>
+
+
+
+
+  <br>
+ <div>
+   <ion-list class="bg-transparent" [hidden]=agence>
+      <ion-item>
+        <ion-label position="floating">Nom de l'agence</ion-label>
+        <ion-input [(ngModel)]="formulaire.nom"  type="texte" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Telephone</ion-label>
+        <ion-input [(ngModel)]="formulaire.telephone" type="number" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Adresse</ion-label>
+        <ion-input [(ngModel)]="formulaire.adresse" type="text" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Latitude</ion-label>
+        <ion-input [(ngModel)]="formulaire.latitude" type="text" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Longitude </ion-label>
+        <ion-input [(ngModel)]="formulaire.longitude" type="text" ></ion-input>
+      </ion-item>
+      <ion-item formArrayName="compteData">
+        <ion-label position="floating">Solde de depart</ion-label>
+        <ion-input [(ngModel)]="compteData.solde" type="number"  required></ion-input>
+      </ion-item>
+    </ion-list>
+    
+<br>
+<ion-list class="bg-transparent"  [hidden]=utilisateur formArrayName="userData">
+  <ion-item>
+    <ion-label position="floating">Nom utilisateur</ion-label>
+    <ion-input [(ngModel)]="userData.nom" type="text" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Prenom utilisateur</ion-label>
+    <ion-input [(ngModel)]="userData.prenom" type="text" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Telephone utilisateur</ion-label>
+    <ion-input [(ngModel)]="userData.telephone" type="number" required></ion-input>
+  </ion-item>
+  <ion-item >
+    <ion-item>
+      <ion-label position="floating">email</ion-label>
+      <ion-input [(ngModel)]="userData.email" type="email"  required></ion-input>
+    </ion-item>
+    <ion-label position="floating" >Mot de passe</ion-label>
+    <ion-input [(ngModel)]="userData.password"  type="text" required></ion-input>
+  </ion-item><br><br>
+</ion-list>
+<ion-button [hidden]=agence  expanded="block" color="secondary" class="btn" (click)="showUser()">Suivant</ion-button>
+<ion-button  expanded="block" [hidden]=utilisateur color="secondary" class="btn2" (click)="CreateAgence()" >Envoyer</ion-button>
+
+ </div>
+</ion-content>

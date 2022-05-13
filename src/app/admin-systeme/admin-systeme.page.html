@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <img src="../../assets/images/projectIcone.jpeg" alt="no image" class="image">
+  </ion-toolbar>
+  <ion-label style="float: right;"><small> Admin System:</small>  {{prenom + ' ' + nom}}</ion-label>
+</ion-header>
+<ion-content>
+  <br><br>
+  <ion-item no-lines routerLinkActive="active" ><i class="fas fa-share"></i><a [routerLink]="['/transfert']">Utilisateurs <i class="fas fa-angle-right"></i></a></ion-item>
+  <ion-item no-lines> <i class="fas fa-reply"></i><a [routerLink]="['/depot-compte']">Depot sur le compte d'une agence <i class="fas fa-angle-right"></i></a></ion-item>
+  <ion-item no-lines><i class="fas fa-sync"></i><a [routerLink]="['/list-agences']">Agences <i class="fas fa-angle-right"></i></a></ion-item>
+  <ion-item no-lines><i class="fas fa-calculator"></i><a [routerLink]="['/liste-transactions']">Transactions <i class="fas fa-angle-right"></i></a></ion-item>
+  <ion-item no-lines><i class="fas fa-calculator"></i><a [routerLink]="['']">Comissions <i class="fas fa-angle-right"></i></a></ion-item>
+  <ion-item no-lines><i class="fas fa-sign-out-alt"></i><a  (click)="logoutProcess()">Deconnexion <i class="fas fa-angle-right"></i></a></ion-item>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-icon name="home" style="margin-top: -20px; margin-left: 10%;font-size: 40px;"></ion-icon>
+    <ion-icon name="timer" style="margin-top: -20px; margin-left: 45%;font-size: 40px;color: #E5E5E5;"></ion-icon>
+    <ion-icon name="calculator" style="margin-top: -20px; margin-left: 80%;font-size: 40px;color: #E5E5E5;"></ion-icon>
+    </ion-toolbar>

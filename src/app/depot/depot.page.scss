@@ -1,0 +1,27 @@
+
+
+  .bg-transparent {
+    width:80%;
+    margin-left: 10%;
+    background: transparent;
+  }
+  ion-item {
+    --background: rgba(0,0,0,0);
+    --border-color: rgba(0,0,0,0);
+      padding: 0%;
+      border-bottom: 1px solid black;
+      border-collapse: collapse;
+}
+.frais{
+    width:40%;
+    float: right;
+}
+.total{
+    width: 100%;
+}
+.btn{
+    width: 70%;
+    margin-left: 15%;
+    border-radius: 10%;
+    background-color:#66e8FF, //#000002,#000, black, hsl(240,100%,0%), rgb(0,0,2)
+}

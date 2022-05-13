@@ -1,0 +1,27 @@
+<ion-header style="border-bottom:4px solid whitesmoke;">
+  <ion-toolbar>
+    <div class="homebutton" routerLinkActive="active"> <i class="fas fa-home"></i><a [routerLink]="['/simple-agent']"></a></div>
+    <img src="https://source.unsplash.com/1080x720/?dolar" alt="no image" class="image"><br><br>
+    <div style="width:160px; border-bottom: 3px solid #66e8FF; margin-left:30%;padding-bottom: 4px;">
+      <i class="fas fa-calculator"></i><span>  Calculateur de frais</span><br>
+      
+      </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="new-background-color">
+<ion-list class="bg-transparent" >
+  <ion-item>
+    <ion-label>Type de transaction</ion-label>
+    <ion-select value="">
+      <ion-select-option></ion-select-option>
+      <ion-select-option value="depot">Depot</ion-select-option>
+      <ion-select-option value="retrait">Retrait</ion-select-option>
+    </ion-select>
+  </ion-item><br>
+  <ion-item>
+    <ion-label position="floating">Montant</ion-label>
+    <ion-input name="prenom_benef" type="number" required></ion-input>
+  </ion-item> <br>
+  <ion-button expanded="block" color="secondary" class="btn">Calculer</ion-button>
+</ion-list>
+</ion-content>

@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="formulaire" (ngSubmit)="login()">
+    <ion-row>
+
+      <ion-col size="12" size-sm="10" offset-sm="1" size-md="8" offset-md="2" size-lg="6" offset-lg="3" size-xl="4"
+        offset-xl="4">
+        <ion-card>
+          <div class="card">
+            <ion-card-header class="header">
+              <img src="../../assets/images/projectIcone.jpeg" alt="no image" class="image">
+              <div style="width:40%; border-bottom: 4px solid #66e8FF; margin-left:30%">
+                <span>Login</span>
+                <br><br>
+              </div>
+            </ion-card-header>
+            <br>
+            <ion-card-content>
+              <ion-item class="ion-no-padding">
+                <div class="item-div">
+                  <ion-label position="stacked" class="ion-text-wrap">Telephone</ion-label>
+                  <ion-input type="tel" placeholder="77 777 77 77" formControlName='username' class="item"
+                    style="width:100%"></ion-input>
+                </div>
+              </ion-item>
+              <br>
+              <ion-item class="ion-no-padding">
+                <div class="item-div">
+                  <ion-label position="stacked">Mot de pass</ion-label>
+                  <ion-input type="password" placeholder="*******" formControlName='password' class="item"></ion-input>
+                </div>
+              </ion-item>
+              <br>
+              <small> <a href="" style="color: #66e8FF;font-weight:bolder; text-decoration: none;">Mot de passe oublié ?
+                </a> </small>
+              <br><br>
+              <ion-button expanded="block" color="secondary" class="btn" (click)="login()"
+                [disabled]='!formulaire.valid'>Se connecter</ion-button>
+            </ion-card-content>
+          </div>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

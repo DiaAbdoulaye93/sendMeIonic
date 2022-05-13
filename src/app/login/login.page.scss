@@ -1,0 +1,45 @@
+
+.header{
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+    border: 2px white;
+    background-color:white
+}
+span{
+
+    font-weight: bolder;
+    margin-left: 35%;
+  
+}
+.card{
+    background-color:#E5E5E5
+}
+.btn{
+width: 100%;
+height: 60px;
+border-radius: 50%  
+}
+.item-content{
+    width: 200%;
+    margin: 0%;
+    padding: 0%;
+} 
+ion-item {
+    --inner-padding-bottom: 0;
+    --inner-padding-end: 0;
+    --inner-padding-start: 0;
+    --inner-padding-top: 0;
+  }
+  .item-div{
+          background-color: #E5E5E5;
+          width: 100%;
+  }
+  .image{
+    display: inline-block;
+    margin-top: 30px;
+    background-color:#E5E5E5;
+     margin-left: 40%;
+      border-radius:50%;
+      width: 20%;
+      height: 70px;
+  }

@@ -1,0 +1,133 @@
+<ion-header style="border-bottom:4px solid whitesmoke;">
+  <ion-toolbar>
+    <button class="homebutton"  (click)='homebutton()'><i class="fas fa-home"></i></button>
+    <img src="../../assets/images/projectIcone.jpeg" alt="no image" class="image"><br><br>
+    <div style="width:40%; border-bottom: 3px solid #66e8FF; margin-left:30%">
+      <span>Dépôt</span>
+      </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="new-background-color">
+  <ion-segment>
+    <ion-segment-button value="emeteur" [ngClass]='loadcomponent' (click)="showEmeteur()">
+      Emetteur
+    </ion-segment-button>
+    <ion-segment-button (click)="showBeneficiaire()">
+  Beneficiaire
+    </ion-segment-button>
+  </ion-segment>
+
+
+
+  <form [formGroup]="formulaire" (ngSubmit)="presentAlert()"  >
+
+  <br>
+ <div>
+   <ion-list class="bg-transparent" [hidden]=emeteur>
+  <ion-item>
+  <!-- <ion-input [(ngModel)]="formulaire.compte"  type="hidden" required value={{idCompte}}></ion-input> 
+  <ion-input [(ngModel)]="formulaire.user"  type="hidden" required value={{idUser}}></ion-input>  --> 
+    <ion-label position="floating">N° CNI emetteur</ion-label>
+    <ion-input   formControlName='cni' type="text" required></ion-input>
+  </ion-item>
+  <p class="error" *ngIf="formulaire.get('cni').invalid && (formulaire.get('cni').dirty || formulaire.get('cni').touched)" style='color: red;'>
+    <ng-container *ngIf="formulaire.get('cni').hasError('required')">
+        Le numero de la piece de l'emeteur est obligatoire
+    </ng-container>
+    <ng-container *ngIf="formulaire.get('cni').hasError('pattern')">
+        * Le numero de cette piece est invalide
+    </ng-container>
+</p>
+  <ion-item>
+    <ion-label position="floating">Nom emetteur</ion-label>
+    <ion-input   formControlName='nomemet' type="text" required></ion-input>
+  </ion-item>
+  <p class="error" *ngIf="formulaire.get('nomemet').invalid && (formulaire.get('nomemet').dirty || formulaire.get('nomemet').touched)" style='color: red;'>
+    <ng-container *ngIf="formulaire.get('nomemet').hasError('required')">
+        Le nom de l'emeteur est obligatoire
+    </ng-container>
+</p>
+  <ion-item>
+    <ion-label position="floating">Prenom emetteur</ion-label>
+    <ion-input  formControlName='prenomemet' type="text"  required></ion-input>
+  </ion-item>
+  <ion-item>
+    <p class="error" *ngIf="formulaire.get('prenomemet').invalid && (formulaire.get('prenomemet').dirty || formulaire.get('prenomemet').touched)" style='color: red;'>
+      <ng-container *ngIf="formulaire.get('prenomemet').hasError('required')">
+          Le prenom de l'emeteur est obligatoire
+      </ng-container>
+  </p>
+    <ion-label position="floating">Telephone emetteur</ion-label>
+    <ion-input  formControlName='telephone' type="number" required></ion-input>
+  </ion-item>
+  <p class="error" *ngIf="formulaire.get('telephone').invalid && (formulaire.get('telephone').dirty || formulaire.get('telephone').touched)" style='color: red;'>
+    <ng-container *ngIf="formulaire.get('telephone').hasError('required')">
+        Le numero de telephone est obligatoire
+    </ng-container>
+    <ng-container *ngIf="formulaire.get('telephone').hasError('pattern')">
+        * Ce format de ce numero de telephone est invalide
+    </ng-container>
+</p>
+  <ion-item>
+    <ion-label position="floating">Montant </ion-label>
+    <ion-input  formControlName='montant' type="number" (input)=montantInput($event)></ion-input>
+  </ion-item><br><br>
+  <div class="frais">
+    <ion-label position="floating" >Frais</ion-label>
+    <span>{{frais}}</span>
+  </div><br><br>
+  <div class="frais">
+    <ion-label position="floating">Total</ion-label>
+    <span>{{total}}</span>
+  </div>
+</ion-list>
+<br>
+<ion-list class="bg-transparent"  [hidden]=beneficiaire>
+  <ion-item>
+    <ion-label position="floating">N° CNI du beneficiaire</ion-label>
+    <ion-input   formControlName='cnireceveur' type="text" required></ion-input>
+  </ion-item>
+  <p class="error" *ngIf="formulaire.get('cnireceveur').invalid && (formulaire.get('cnireceveur').dirty || formulaire.get('cnireceveur').touched)" style='color: red;'>
+    <ng-container *ngIf="formulaire.get('cnireceveur').hasError('required')">
+        Le numero de la piece de l'emeteur est obligatoire
+    </ng-container>
+    <ng-container *ngIf="formulaire.get('cnireceveur').hasError('pattern')">
+        * Le numero de cette piece est invalide
+    </ng-container>
+</p>
+  <ion-item>
+    <ion-label position="floating">Nom beneficiaire</ion-label>
+    <ion-input  formControlName='nombenef' type="text" required></ion-input>
+  </ion-item>
+  <p class="error" *ngIf="formulaire.get('nombenef').invalid && (formulaire.get('nombenef').dirty || formulaire.get('nombenef').touched)" style='color: red;'>
+    <ng-container *ngIf="formulaire.get('nombenef').hasError('required')">
+        Le nom du beneficiaire est obligatoire
+    </ng-container>
+</p>
+  <ion-item>
+    <ion-label position="floating">Prenom beneficiaire</ion-label>
+    <ion-input  formControlName='prenombenef' type="text" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <p class="error" *ngIf="formulaire.get('prenombenef').invalid && (formulaire.get('prenombenef').dirty || formulaire.get('prenombenef').touched)" style='color: red;'>
+      <ng-container *ngIf="formulaire.get('prenombenef').hasError('required')">
+          Le prenom du beneficiaire est obligatoire
+      </ng-container>
+  </p>
+    <ion-label position="floating">Telephone beneficiaire</ion-label>
+    <ion-input  formControlName='telephonebenef' type="number" required></ion-input>
+  </ion-item>
+  <p class="error" *ngIf="formulaire.get('telephonebenef').invalid && (formulaire.get('telephonebenef').dirty || formulaire.get('telephonebenef').touched)" style='color: red;'>
+    <ng-container *ngIf="formulaire.get('telephonebenef').hasError('required')">
+        Le numero de telephone est obligatoire
+    </ng-container>
+    <ng-container *ngIf="formulaire.get('telephonebenef').hasError('pattern')">
+        * Ce format de ce numero de telephone est invalide
+    </ng-container>
+</p>
+</ion-list>
+<ion-button [hidden]=emeteur  expanded="block" color="secondary" class="btn" (click)="showBeneficiaire()">Suivant</ion-button>
+<ion-button  expanded="block" [hidden]=beneficiaire color="secondary" class="btn2" (click)="presentAlert()" [disabled] = '!formulaire.valid'>Envoyer</ion-button>
+ </div>
+  </form>
+</ion-content>

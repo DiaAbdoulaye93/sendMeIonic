@@ -1,0 +1,74 @@
+<ion-header style="border-bottom:4px solid whitesmoke;">
+  <ion-toolbar>
+    <button class="homebutton" (click)='homebutton()'><i class="fas fa-home"></i></button>
+    <img src="../../assets/images/projectIcone.jpeg" alt="no image" class="image"><br><br>
+    <div style="width:40%; border-bottom: 3px solid #66e8FF; margin-left:30%">
+      <span>Retrait</span>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="new-background-color">
+  <ion-item class="bg-transparent">
+    <ion-label position="floating">Saisir le code de la transaction</ion-label>
+    <ion-input [(ngModel)]="formulaire.code" type="string" required></ion-input>
+  </ion-item>
+
+  <ion-item class="bg-transparent">
+    <ion-label position="floating">Saisir le numero de la piece du beneficiaire</ion-label>
+    <ion-input [(ngModel)]="formulaire.cnireceveur" type="string" (focusout)="findTransction($event)" required>
+    </ion-input>
+  </ion-item>
+  <span style="color: red;">{{cniError}}</span>
+  <ion-segment [hidden]=InfosShow>
+    <ion-segment-button (click)="showBeneficiaire()" [ngClass]='loadcomponent'>
+      Beneficiaire
+    </ion-segment-button>
+    <ion-segment-button value="emeteur" class="segment" (click)="showEmeteur()"> Emetteur
+    </ion-segment-button>
+  </ion-segment>
+
+
+
+
+  <br>
+  <div [hidden]=InfosShow>
+    <ion-list class="bg-transparent" [hidden]=emeteur>
+      <ion-item lines="none">
+        <span>Cni de l'emetteur: {{this.cniEmeteur}}</span>
+      </ion-item>
+      <ion-item>
+        <span>Nom de l'emetteur: {{this.nomEmeteur}}</span>
+      </ion-item>
+      <ion-item>
+        <span>Prenom de l'emetteur: {{this.prenomEmeteur}}</span>
+      </ion-item>
+      <ion-item>
+        <span>Telephone de l'emetteur: {{this.telephoneEmeteur}}</span>
+      </ion-item>
+      <ion-item>
+        <span>Montant de la transaction: {{this.montantTransaction}}</span>
+      </ion-item>
+    </ion-list>
+    <br>
+    <ion-list class="bg-transparent" [hidden]=beneficiaire>
+      <ion-item>
+        <span> Nom du beneficiaire: {{this.nomBeneficiaire}}</span>
+      </ion-item>
+      <ion-item>
+        <span>Prenom du beneficiaire: {{this.prenomBeneficiaire}}</span>
+      </ion-item>
+      <ion-item>
+        <span>Telephone du beneficiaire: {{this.telephoneBeneficiaire}}</span>
+      </ion-item>
+      <ion-item>
+        <span>Montant de la transaction: {{this.montantTransaction}}</span>
+      </ion-item>
+    </ion-list>
+    <ion-button expanded="block" [hidden]=beneficiaire color="secondary" class="btn2" (click)="showEmeteur()">Suivant
+    </ion-button>
+    <ion-button [hidden]=emeteur expanded="block" color="secondary" class="btn" (click)="presentAlert()">Envoyer
+    </ion-button>
+
+  </div>
+</ion-content>
