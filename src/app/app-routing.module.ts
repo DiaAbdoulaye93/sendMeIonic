@@ -90,6 +90,10 @@ const routes: Routes = [
     loadChildren: () => import('./agence-admintransaction/agence-admintransaction.module').then( m => m.AgenceAdmintransactionPageModule),
     canActivate: [AuthGuard]
   },
+  {
+    path: 'client-interface',
+    loadChildren: () => import('./client/client-interface/client-interface.module').then( m => m.ClientInterfacePageModule)
+  },
 ];
 
 @NgModule({
